@@ -50,11 +50,9 @@ prevx = 0
 page = 0
 prevpage = page
 
-if len(pictotal) > 8:
+if 1:
     page8_count = int(len(pictotal)/8)
     last_page8_size = len(pictotal)-(page8_count*8)
-
-if len(pictotal) > 12:
     page12_count = int(len(pictotal)/12)
     last_page12_size = len(pictotal)-(page12_count*12)
 
@@ -118,7 +116,7 @@ while 1:
     if Sflag or resetflag:
         ims = Image.init_images(pic, height, width)
         Image.draw_images(ims)
-        resetflag = 0
+    resetflag = 0
 
     prevpage = page
 
@@ -139,6 +137,9 @@ while 1:
                 break
     if c == ord('p') and page > 0:
         page -= 1
+
+    if c == ord('r'):
+        resetflag = 1
 
     if (2*height)>width:
         if c == ord('n') and page < page8_count:

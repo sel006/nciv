@@ -8,9 +8,6 @@ Dependancies:
  - w3m browser
  - python curses library
 
-To run this program, edit the argument of os.listdir() on line
-24 of img.py to be the directory which you want to view.
-
 In Image.py, line 24, change the argument of subprocess.run() to 
 point to the w3mimgdisplay executable file.
 
