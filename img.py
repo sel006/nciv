@@ -81,6 +81,8 @@ while 1:
         dir = 'w'
 
     if dir != prev_dir or prevpage != page:
+        cursx = 0
+        cursy = 0
         if prevpage != page:
             stdscr.clear()
             stdscr.refresh()
@@ -89,25 +91,20 @@ while 1:
         if dir == 'l':
             offset = 2
             vals = Selection.tall(pictotal, page8_count, last_page8_size, page)
-            wmax = vals[0]
-            hmax = vals[1]
-            WMAX = vals[2]
-            HMAX = vals[3]
-            maxnum = vals[4]
-            pic = vals[5]
         else:
             offset = 4
             vals = Selection.wide(pictotal, page12_count, last_page12_size, page)
-            wmax = vals[0]
-            hmax = vals[1]
-            WMAX = vals[2]
-            HMAX = vals[3]
-            maxnum = vals[4]
-            pic = vals[5]
+
+        wmax = vals[0]
+        hmax = vals[1]
+        WMAX = vals[2]
+        HMAX = vals[3]
+        maxnum = vals[4]
+        pic = vals[5]
         Sflag = 1
 
     cursx += Misc.check_limitx(cursx, cursy, hmax, wmax, prevy, WMAX)
-    cursy += Misc.check_limity(cursx, cursy, hmax, wmax, prevx)
+    cursy += Misc.check_limity(cursx, cursy, hmax, wmax, prevx, HMAX)
 
     index = cursy * offset + cursx
 
@@ -123,6 +120,11 @@ while 1:
     c = stdscr.getch()
     if c == ord('q'):
         endall()
+        print(HMAX)
+        print(WMAX)
+        print('')
+        print(hmax)
+        print(wmax)
         break
 
     if c == ord('f'):

@@ -19,9 +19,9 @@ def tall(pictotal, page8_count, last_page8_size, page):
     maxnum = len(pic)
     tmaxnum = maxnum - 1
     flag = 0
-    for x in range(0, hmax+1):
+    for x in range(0, HMAX+1):
         if not flag:
-            if tmaxnum <= (x*offset)+wmax:
+            if tmaxnum <= (x*offset)+WMAX:
                 hmax = x
                 flag = 1
     flag = 0
@@ -36,11 +36,13 @@ def tall(pictotal, page8_count, last_page8_size, page):
     vals = []
     vals.append(wmax)
     vals.append(hmax)
-    vals.append(WMAX)
-    vals.append(HMAX)
+    vals.append(WMAX+1)
+    vals.append(HMAX+1)
     vals.append(maxnum)
     vals.append(pic)
     return vals
+
+import sys
 
 def wide(pictotal, page12_count, last_page12_size, page):
     wmax = 3
@@ -62,25 +64,27 @@ def wide(pictotal, page12_count, last_page12_size, page):
     maxnum = len(pic)
     tmaxnum = maxnum - 1
     flag = 0
-    for x in range(0, hmax):
+    for x in range(0, HMAX+1):
         if not flag:
-            if tmaxnum <= (x*offset)+wmax:
+            if tmaxnum <= (x*offset)+WMAX:
                 hmax = x
                 flag = 1
     flag = 0
-    for x in range(0, HMAX):
+    for x in range(0, HMAX+1):
         if not flag:
             if tmaxnum <= (x*offset)+WMAX:
                 wmax = tmaxnum-(x*offset)
                 flag = 1
+
     if maxnum < 4:
-        WMAX = wmax
+        HMAX = 0
+        WMAX = tmaxnum 
 
     vals = []
     vals.append(wmax)
     vals.append(hmax)
-    vals.append(WMAX)
-    vals.append(HMAX)
+    vals.append(WMAX+1)
+    vals.append(HMAX+1)
     vals.append(maxnum)
     vals.append(pic)
     return vals

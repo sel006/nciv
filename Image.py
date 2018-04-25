@@ -44,6 +44,7 @@ def init_images(pics, my, mx):
         imy = y * hprop 
         for x in range(0,xran):
             if n == 0:
+#                print('yes')
                 return images
             pic = pics[(y*xran)+x]
             imx = x * wprop 
